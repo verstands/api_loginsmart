@@ -3,40 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\conge;
+
 
 class Ctrconge extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'martricule_ch' => 'required',
+            'datedebut' => 'required',
+            'datefin' => 'required',
+            'annee' => 'required',
+            'comm' => 'required',
+            'typ_cong' => 'required',
+            'nbr_jrs_ouv' => 'required',
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = conge::create([
+            'martricule_ch' => $request->martricule_ch,
+            'datedebut' => $request->datedebut,
+            'datefin' => $request->datefin,
+            'annee' => $request->annee,
+            'comm' => $request->comm,
+            'typ_cong' => $request->typ_cong,
+            'nbr_jrs_ouv' => $request->nbr_jrs_ouv
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "conge créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = conge::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les conges',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = conge::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +58,7 @@ class Ctrconge extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = conge::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

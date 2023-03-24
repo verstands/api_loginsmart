@@ -133,7 +133,7 @@ class Ctrcategorie extends Controller
             return response()->json([
                 'message' => 'Les categorie_vehicules',
                 'data' => $view
-            ], 200);
+            ], 200); 
         }
     
         public function indexID_vehicule($id){

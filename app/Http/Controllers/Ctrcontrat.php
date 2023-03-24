@@ -3,22 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\contrat;
 
 class Ctrcontrat extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'dat_contrat' => 'required',
+            'preneur' => 'required',
+            'assureur' => 'required',
+            'agence' => 'required',
+            'nom_contr' => 'required',
+            'state_contrat' => 'required',
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = contrat::create([
+            'dat_contrat' => $request->dat_contrat,
+            'preneur' => $request->preneur,
+            'assureur' => $request->assureur,
+            'agence' => $request->agence,
+            'nom_contr' => $request->nom_contr,
+            'state_contrat' => $request->state_contrat
         ]);
 
         return response()->json([
@@ -28,15 +33,15 @@ class Ctrcontrat extends Controller
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = contrat::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les contrats',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = contrat::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +55,7 @@ class Ctrcontrat extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = contrat::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

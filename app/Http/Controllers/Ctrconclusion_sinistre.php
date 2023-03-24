@@ -3,40 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\conclusion_sinistre;
 
 class Ctrconclusion_sinistre extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'conclusion_sinistre' => 'required'
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = conclusion_sinistre::create([
+            'conclusion_sinistre' => $request->conclusion_sinistre
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "conclusion_sinistre créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = conclusion_sinistre::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les conclusion_sinistres',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = conclusion_sinistre::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +45,7 @@ class Ctrconclusion_sinistre extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = conclusion_sinistre::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

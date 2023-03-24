@@ -3,40 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\couleur;
+
 
 class Ctrcouleur extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'nom_coul' => 'required'
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = couleur::create([
+            'nom_coul' => $request->nom_coul
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "couleur créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = couleur::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les couleurs',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = couleur::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +46,7 @@ class Ctrcouleur extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = couleur::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

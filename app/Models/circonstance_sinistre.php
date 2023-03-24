@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class circonstance_sinitre extends Model
+class circonstance_sinistre extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [

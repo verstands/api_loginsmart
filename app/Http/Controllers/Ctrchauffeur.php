@@ -3,40 +3,75 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\chauffeur;
 
 class Ctrchauffeur extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+        'matricule_ch' => 'required',
+        'nom' => 'required',
+        'prenom' => 'required',
+        'telephone' => 'required',
+        'adresse' => 'required',
+        'etaciv' => 'required',
+        'date_eng' => 'required',
+        'date_fin' => 'required',
+        'statut' => 'required',
+        'profil' => 'required',
+        'date_nais' => 'required',
+        'date_cr' => 'required',
+        'user_cr' => 'required',
+        'sexe' => 'required',
+        'type_contrat' => 'required',
+        'typ_trav' => 'required',
+        'commentaire' => 'required',
+        'telephon_serv' => 'required',
+        'id_permi' => 'required',
+        'ville' => 'required',
+        'champ_modif' => 'required'
         ]);
 
-        $valide = assureur::create([
+        $valide = chauffeur::create([
+            'matricule_ch' => $request->matricule_ch,
             'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'telephone' => $request->telephone,
             'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+            'etaciv' => $request->etaciv,
+            'date_eng' => $request->date_eng,
+            'date_fin' => $request->date_fin,
+            'statut' => $request->statut,
+            'profil' => $request->profil,
+            'date_nais' => $request->date_nais,
+            'date_cr' => $request->date_cr,
+            'user_cr' => $request->user_cr,
+            'sexe' => $request->sexe,
+            'type_contrat' => $request->type_contrat,
+            'typ_trav' => $request->typ_trav,
+            'commentaire' => $request->commentaire,
+            'telephon_serv' => $request->telephon_serv,
+            'id_permi' => $request->id_permi,
+            'ville' => $request->ville,
+            'champ_modif' => $request->champ_modif
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "chauffeur créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = chauffeur::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les chauffeurs',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = chauffeur::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +85,7 @@ class Ctrchauffeur extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = chauffeur::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([
