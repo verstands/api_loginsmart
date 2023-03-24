@@ -243,7 +243,13 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/garantie', [Ctrgarantie::class, 'create']);
     Route::get('/garantie', [Ctrgarantie::class, 'index']);
     Route::get('/garantie/{id}', [Ctrgarantie::class, 'indexID']);
-    Route::delete('/garantie/{id}', [Ctrconge::class, 'delete']);
+    Route::delete('/garantie/{id}', [Ctrgarantie::class, 'delete']);
+    //garantie
+    Route::post('/garantie_contrat', [Ctrgarantie_contrat::class, 'create']);
+    Route::get('/garantie_contrat', [Ctrgarantie_contrat::class, 'index']);
+    Route::get('/garantie_contrat/{id}', [Ctrgarantie_contrat::class, 'indexID']);
+    Route::delete('/garantie_contrat/{id}', [Ctrgarantie_contrat::class, 'delete']);
+    //groupe
     //groupe
     Route::post('/groupe', [Ctrgroupe::class, 'create']);
     Route::get('/groupe', [Ctrgroupe::class, 'index']);

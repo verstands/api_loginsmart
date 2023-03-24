@@ -9,7 +9,6 @@ class degat extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_deg',
         'id_sinister',
         'id_tiers',
         'id_materiel',

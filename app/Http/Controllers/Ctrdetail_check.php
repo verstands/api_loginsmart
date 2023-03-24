@@ -3,40 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\detail_check;
+
 
 class Ctrdetail_check extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'id_check' => 'required',
+            'lib_check' => 'required',
+            'categorie_check' => 'required',
+            'user_detail_check' => 'required',
+            'date_detail_check' => 'required',
+            'ok' => 'required',
+            'state_detail_check' => 'required',
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = detail_check::create([
+            'id_check' => $request->id_check,
+            'lib_check' => $request->lib_check,
+            'categorie_check' => $request->categorie_check,
+            'user_detail_check' => $request->user_detail_check,
+            'date_detail_check' => $request->date_detail_check,
+            'ok' => $request->ok,
+            'state_detail_check' => $request->state_detail_check
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "detail_check créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = detail_check::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les detail_checks',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = detail_check::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +58,7 @@ class Ctrdetail_check extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = detail_check::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

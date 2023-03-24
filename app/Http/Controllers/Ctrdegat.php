@@ -3,40 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\degat;
+
 
 class Ctrdegat extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'nom' => 'required',
-            'adresse' => 'required',
-            'num_ident_nat' => 'required',
-            'user_cr' => 'required',
+            'id_sinister' => 'required',
+            'id_tiers' => 'required',
+            'id_materiel' => 'required',
+            'remarque' => 'required',
+            'categorie' => 'required',
+            'cout' => 'required',
+            'cout_eff' => 'required',
+            'type' => 'required',
+            'code' => 'required',
+            'id_ij' => 'required',
+            'state_degat' => 'required',
         ]);
 
-        $valide = assureur::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'num_ident_nat' => $request->num_ident_nat,
-            'user_cr' => $request->user_cr
+        $valide = degat::create([
+            'id_sinister' => $request->id_sinister,
+            'id_tiers' => $request->id_tiers,
+            'id_materiel' => $request->id_materiel,
+            'remarque' => $request->remarque,
+            'categorie' => $request->categorie,
+            'cout' => $request->cout,
+            'cout_eff' => $request->cout_eff,
+            'code' => $request->code,
+            'type' => $request->type,
+            'id_ij' => $request->id_ij,
+            'state_degat' => $request->state_degat,
         ]);
 
         return response()->json([
-            'message' => "assureur créé avec succès !",
+            'message' => "degat créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
     public function index(){
-        $view = assureur::all();
+        $view = degat::all();
         return response()->json([
-            'message' => 'Les assureurs',
+            'message' => 'Les degats',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = assureur::whereId(['id' => $id])->first();
+        $verify = degat::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -50,7 +66,7 @@ class Ctrdegat extends Controller
     }
 
     public function delete($id){
-        $verify = assureur::whereId($id)->first();
+        $verify = degat::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

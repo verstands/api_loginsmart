@@ -9,7 +9,7 @@ class groupe0 extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'numero',
+        'id',
         'codegroupe',
         'type_gen',
         'modele',

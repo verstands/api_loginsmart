@@ -9,7 +9,7 @@ class garantie extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_garantie',
+        'nom_garant',
         'state_garantie',
         'user_garantie',
         'date_garantie'
