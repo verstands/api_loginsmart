@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ident_piece', function (Blueprint $table) {
+        Schema::create('loges', function (Blueprint $table) {
             $table->id();
             $table->string('date');
             $table->string('operation');

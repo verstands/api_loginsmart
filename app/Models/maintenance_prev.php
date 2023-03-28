@@ -9,20 +9,12 @@ class maintenance_prev extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
-        'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
-        'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'heures_def',
+        'heur',
+        'mois_def',
+        'mois',
+        'id_typ_rep_gen',
+        'Id_type_maint',
+        'active'
     ];
-}
 }

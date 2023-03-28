@@ -10,13 +10,12 @@ class planning extends Model
     use HasFactory, HasApiTokens;
     protected $fillable = [
         'id',
-        'description',
-        'montant',
-        'user_d',
-        'type',
-        'date_i',
-        'etat',
-        'etat_fin',
-        'raison_fin',
+        'plaque',
+        'pers',
+        'date1',
+        'date2',
+        'dest',
+        'raison',
+        'chauf',
     ];
 }

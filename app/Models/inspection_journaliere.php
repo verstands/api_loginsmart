@@ -9,20 +9,13 @@ class inspection_journaliere extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
-        'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
+        'nom_agent',
+        'date_ij',
         'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'date_cr_ij',
+        'date_mod_ij',
+        'user_cr_ij',
+        'user_mod_ij',
+        'id_veh'
     ];
-}
 }

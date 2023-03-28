@@ -4,25 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class type_conges extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
-        'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
-        'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'lib_typ_cong'
     ];
-}
 }

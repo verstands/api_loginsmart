@@ -4,25 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Sanctum\HasApiTokens;
 class offre extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
+        'type',
+        'id_domaine',
+        'id_fsseur',
+        'id_famille',
         'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
-        'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'date_cr',
+        'user_cr',
+        'date_mod',
+        'user_mod'
     ];
-}
 }

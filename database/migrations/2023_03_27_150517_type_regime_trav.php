@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('type_regime_travs', function (Blueprint $table) {
             $table->id();
-            $table->string('num');
+            $table->string('des_typ_reg');
             $table->string('immatriculation');
             $table->string('date_plein');
             $table->string('qteplein');

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sinistre_fin', function (Blueprint $table) {
+        Schema::create('sinistre_fins', function (Blueprint $table) {
             $table->id();
             $table->string('dat_sinistre');
             $table->string('plage_horaire');

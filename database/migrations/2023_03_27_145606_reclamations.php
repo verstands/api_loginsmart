@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('raison_fin_r');
             $table->string('montant');
             $table->string('user2');
-           
             $table->timestamps();
         });
     }

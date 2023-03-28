@@ -9,19 +9,16 @@ class vehicule_tiers extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
-        'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',  
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
-        'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'marque_veh_tiers',
+        'modele',
+        'immatr_veh_tiers',
+        'num_chassis_veh_tiers',
+        'num_moteur_veh_tiers',  
+        'an_ac_veh_tiers',
+        'agence_ass_t',
+        'contrat_ass_t',
+        'carte_verte',
+        'rc',
+        'delai_rc'
     ];
 }

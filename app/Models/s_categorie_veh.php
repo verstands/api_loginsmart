@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Sanctum\HasApiTokens;
 class s_categorie_veh extends Model
 {
     use HasFactory, HasApiTokens;
@@ -24,5 +24,4 @@ class s_categorie_veh extends Model
         'date_cr_h_ass',
         'user_cr_h_ass'
     ];
-}
 }

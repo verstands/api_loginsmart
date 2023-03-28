@@ -9,20 +9,12 @@ class travaux_gen extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'id_h_assurance',
-        'id_objet',
-        'id_type',
-        'num_contrat',
-        'num_carte_verte',
-        'id_agence',
-        'prix_ht',
-        'taxes',
-        'prix_ttc',
-        'id_assurance',
-        'date_cv',
-        'commentaire',
-        'date_cr_h_ass',
-        'user_cr_h_ass'
+        'id_operation',
+        'type_travail',
+        'id_produit',
+        'cout',
+        'obs',
+        'user_t',
+        'prix_ht'
     ];
-}
 }
