@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('travaux_descs', function (Blueprint $table) {
+            $table->id();
+            $table->string('num');
+            $table->string('trav_desc');
+            $table->timestamps();
+        });
     }
 
     /**

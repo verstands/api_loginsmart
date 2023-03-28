@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('statut_chauffeurs', function (Blueprint $table) {
+            $table->id();
+            $table->string('design_statut_ch');
+            $table->timestamps();
+        });
     }
 
     /**

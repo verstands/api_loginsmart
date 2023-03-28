@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('reglement_sinistres', function (Blueprint $table) {
+            $table->id();
+            $table->string('reglement_sinistre');
+            $table->timestamps();
+        });
     }
 
     /**

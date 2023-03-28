@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_carburants', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom_carb');
+            $table->timestamps();
+        });
     }
 
     /**

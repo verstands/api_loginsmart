@@ -11,7 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('suivi_sinistres', function (Blueprint $table) {
+            $table->id();
+            $table->string('id_sinistre');
+            $table->string('detail_reglement');
+            $table->string('id_conclusion');
+            $table->string('date_cr_suivi');
+            $table->string('user_cr_suivi');
+            $table->string('date_suivi');
+            $table->timestamps();
+        });
     }
 
     /**

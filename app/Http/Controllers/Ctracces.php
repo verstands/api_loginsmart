@@ -13,7 +13,6 @@ class Ctracces extends Controller
             'idUser' => 'required',
             'idSite' => 'required',
         ]);
-
         $valide = acces::create([
             'idUser' => $request->idUser,
             'idSite' => $request->idSite,

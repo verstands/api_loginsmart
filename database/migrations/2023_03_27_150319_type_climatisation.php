@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_climatisations', function (Blueprint $table) {
+            $table->id();
+            $table->string('type_clim');
+            $table->timestamps();
+        });
     }
 
     /**

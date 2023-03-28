@@ -11,7 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_regime_travs', function (Blueprint $table) {
+            $table->id();
+            $table->string('num');
+            $table->string('immatriculation');
+            $table->string('date_plein');
+            $table->string('qteplein');
+            $table->string('kilometrage');
+            $table->string('type_carb');
+            $table->string('matricule_ch');
+            $table->string('observation');
+            $table->string('user');
+            $table->string('datesyst');
+            $table->string('id_veh');
+            $table->string('id_chauf');
+            $table->string('suppr');
+            $table->string('id_plein');
+            $table->timestamps();
+        });
     }
 
     /**

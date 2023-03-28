@@ -11,7 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('travaux_recl', function (Blueprint $table) {
+            $table->id();
+            $table->string('IDop');
+            $table->string('type_travail');
+            $table->string('IDsub_mat');
+            $table->string('cout');
+            $table->string('observation');
+            $table->string('user_t_r');
+            $table->timestamps();
+        });
     }
 
     /**

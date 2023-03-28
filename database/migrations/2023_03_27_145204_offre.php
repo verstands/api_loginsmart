@@ -11,7 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('offres', function (Blueprint $table) {
+            $table->id();
+            $table->string('type');
+            $table->string('id_domaine');
+            $table->string('id_fsseur');
+            $table->string('id_famille');
+            $table->string('id_objet');
+            $table->string('user_cr');
+            $table->string('date_mod');
+            $table->string('user_mod');
+            $table->timestamps();
+        });
     }
 
     /**

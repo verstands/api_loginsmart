@@ -11,7 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('reclamations', function (Blueprint $table) {
+            $table->id();
+            $table->string('IDopera');
+            $table->string('IDrep');
+            $table->string('IDtype_rep');
+            $table->string('intitule');
+            $table->string('description');
+            $table->string('etat1');
+            $table->string('etat');
+            $table->string('date_debut');
+            $table->string('date_fin');
+            $table->string('raison_fin_r');
+            $table->string('montant');
+            $table->string('user2');
+           
+            $table->timestamps();
+        });
     }
 
     /**

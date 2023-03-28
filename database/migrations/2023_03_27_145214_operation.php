@@ -11,7 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('operations', function (Blueprint $table) {
+            $table->id();
+            $table->string('reparationID');
+            $table->string('num_type');
+            $table->string('intitule');
+            $table->string('montant');
+            $table->string('jour');
+            $table->string('etat');
+            $table->string('etat_fin');
+            $table->string('raison_fin');
+            $table->string('date_fin_op');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('modeles', function (Blueprint $table) {
+            $table->id();
+            $table->string('IDmarque');
+            $table->string('modele');
+            $table->timestamps();
+        });
     }
 
     /**

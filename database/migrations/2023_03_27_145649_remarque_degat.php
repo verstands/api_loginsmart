@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('remarque_degat', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom_remarque');
+            $table->timestamps();
+        });
     }
 
     /**

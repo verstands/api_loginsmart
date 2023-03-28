@@ -11,7 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('ident_piece', function (Blueprint $table) {
+            $table->id();
+            $table->string('num');
+            $table->string('type_rep');
+            $table->string('date_debut');
+            $table->string('date_fin');
+            $table->string('date_reel');
+            $table->string('intervention');
+            $table->string('km1');
+            $table->string('km2');
+            $table->string('mat_mec');
+            $table->string('cout');
+            $table->string('explicatif');
+            $table->timestamps();
+        });
     }
 
     /**

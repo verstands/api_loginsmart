@@ -11,7 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('reclamation_gens', function (Blueprint $table) {
+            $table->id();
+            $table->string('id_op');
+            $table->string('type_rep');
+            $table->string('intitule');
+            $table->string('etat1');
+            $table->string('etat');
+            $table->string('date_debut');
+            $table->string('date_fin');
+            $table->string('raison_fin_r');
+            $table->string('montant_recl');
+            $table->string('user_recl');
+            $table->string('description_r');
+            $table->string('num_bon_r');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_mains', function (Blueprint $table) {
+            $table->id();
+            $table->string('libel_type_main');
+            $table->string('id_freq_maint');
+            $table->timestamps();
+        });
     }
 
     /**

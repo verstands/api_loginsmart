@@ -11,7 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('pleingens', function (Blueprint $table) {
+            $table->id();
+            $table->string('numero');
+            $table->string('date_plein');
+            $table->string('qteplein');
+            $table->string('heures');
+            $table->string('type_carb');
+            $table->string('agent');
+            $table->string('user');
+            $table->string('datesyst');
+            $table->string('id_pleingen');
+            $table->string('suppr');
+            $table->timestamps();
+        });
     }
 
     /**

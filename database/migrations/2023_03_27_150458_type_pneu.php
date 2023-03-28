@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_pneus', function (Blueprint $table) {
+            $table->id();
+            $table->string('detail_pneu');
+            $table->timestamps();
+        });
     }
 
     /**

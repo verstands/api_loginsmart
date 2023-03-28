@@ -11,7 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('vehicule_tiers', function (Blueprint $table) {
+            $table->id();
+            $table->string('num');
+            $table->string('marque_veh_tiers');
+            $table->string('modele');
+            $table->string('immatr_veh_tiers');
+            $table->string('num_chassis_veh_tiers');
+            $table->string('num_moteur_veh_tiers');
+            $table->string('an_ac_veh_tiers');
+            $table->string('agence_ass_t');
+            $table->string('contrat_ass_t');
+            $table->string('carte_verte');
+            $table->string('rc');
+            $table->string('delai_rc');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -11,7 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('ident_piece', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom_agent');
+            $table->string('date_ij');
+            $table->string('commentaire');
+            $table->string('date_cr_ij');
+            $table->string('date_mod_ij');
+            $table->string('user_cr_ij');
+            $table->string('user_mod_ij');
+            $table->string('id_veh');
+            $table->timestamps();
+        });
     }
 
     /**

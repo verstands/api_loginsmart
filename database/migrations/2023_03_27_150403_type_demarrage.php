@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_demarrages', function (Blueprint $table) {
+            $table->id();
+            $table->string('det_type');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('transmissions', function (Blueprint $table) {
+            $table->id();
+            $table->string('typ_transm');
+            $table->timestamps();
+        });
     }
 
     /**

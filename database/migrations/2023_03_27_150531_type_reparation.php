@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_reparations', function (Blueprint $table) {
+            $table->id();
+            $table->string('type_rep');
+            $table->timestamps();
+        });
     }
 
     /**

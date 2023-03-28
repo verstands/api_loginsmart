@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('mois_d_annees', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom_mois');
+            $table->string('abb_mois');
+            $table->timestamps();
+        });
     }
 
     /**

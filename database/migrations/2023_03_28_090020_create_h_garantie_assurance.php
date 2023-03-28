@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maintenance_prevs', function (Blueprint $table) {
+        Schema::create('h_garantie_assurance', function (Blueprint $table) {
             $table->id();
-            $table->string('heures_def');
-            $table->string('heur');
-            $table->string('mois_def');
-            $table->string('mois');
-            $table->string('id_typ_rep_gen');
-            $table->string('Id_type_maint');
-            $table->string('active');
+            $table->string('id_h_assurance');
+            $table->string('id_garantie');
+            $table->string('echeance');
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('h_garantie_assurance');
     }
 };

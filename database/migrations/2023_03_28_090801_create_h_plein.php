@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reparations', function (Blueprint $table) {
+        Schema::create('h_plein', function (Blueprint $table) {
             $table->id();
+            $table->string('num');
             $table->string('immatriculation');
+            $table->string('date_plein');
+            $table->string('qteplein');
             $table->string('kilometrage');
-            $table->string('kilometrage2');
-            $table->string('daterep');
-            $table->string('dtsorti');
-            $table->string('date_prevu');
-            $table->string('cout');
-            $table->string('id_fseur');
-            $table->string('comment');
-            $table->string('code_rep');
+            $table->string('type_carb');
+            $table->string('matricule_ch');
+            $table->string('observation');
             $table->string('user');
-            $table->string('date_cr');
-            $table->string('id_controle');
-            $table->string('id_inspection');
+            $table->string('datesyst');
+            $table->string('id_veh');
+            $table->string('id_chauf');
+            $table->string('suppr');
+            $table->string('id_plein');
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('h_plein');
     }
 };

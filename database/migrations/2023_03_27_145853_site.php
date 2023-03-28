@@ -11,7 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('sites', function (Blueprint $table) {
+            $table->id();
+            $table->string('CodeSite');
+            $table->string('IdVille');
+            $table->string('nom_site');
+            $table->string('IdZone');
+            $table->string('adress');
+            $table->string('tel');
+            $table->string('state');
+            $table->timestamps();
+        });
     }
 
     /**

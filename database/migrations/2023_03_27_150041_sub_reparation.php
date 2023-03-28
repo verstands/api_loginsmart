@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('sub_reparations', function (Blueprint $table) {
+            $table->id();
+            $table->string('cat2');
+            $table->string('sous_cat');
+            $table->timestamps();
+        });
     }
 
     /**

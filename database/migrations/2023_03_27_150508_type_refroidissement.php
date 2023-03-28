@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('type_refroidissement', function (Blueprint $table) {
+            $table->id();
+            $table->string('detail_type');
+            $table->timestamps();
+        });
     }
 
     /**

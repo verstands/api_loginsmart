@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('rpm_gens', function (Blueprint $table) {
+            $table->id();
+            $table->string('rpm_gen');
+            $table->timestamps();
+        });
     }
 
     /**
