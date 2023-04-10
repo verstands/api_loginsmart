@@ -17,6 +17,7 @@ class admin extends Model
         'ville',
         'status',
         'etat',
-        'acces_a'
+        'acces_a',
+        'num_admin'
     ];
 }

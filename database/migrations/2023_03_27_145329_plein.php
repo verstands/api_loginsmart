@@ -11,14 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
         Schema::create('pleins', function (Blueprint $table) {
             $table->id();
             $table->string('num');
@@ -37,5 +29,13 @@ return new class extends Migration
             $table->string('id_plein');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+       
     }
 };

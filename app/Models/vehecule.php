@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class vehecule extends Model
 {
@@ -52,6 +53,6 @@ class vehecule extends Model
     'user_cr',
     'date_systm',
     'id_veh'
-        ];
+    ];
 
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class plein extends Model
 {
@@ -22,5 +23,6 @@ class plein extends Model
         'id_chauf',
         'suppr',
         'id_plein',
+        'num'
     ];
 }

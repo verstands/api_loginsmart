@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Sanctum\HasApiTokens;
 class site extends Model
 {
     use HasFactory, HasApiTokens;
@@ -15,6 +15,7 @@ class site extends Model
         'IdZone',
         'adress',
         'tel',
+        'ref_site',
         'state'
     ];
 }

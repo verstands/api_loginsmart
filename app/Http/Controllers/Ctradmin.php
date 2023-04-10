@@ -16,8 +16,6 @@ class Ctradmin extends Controller
             'mot' => 'required',
             'ville' => 'required',
             'status' => 'required',
-            'etat' => 'required',
-            'acces_a' => 'required'
         ]);
         $valide = admin::create([
             'nom' => $request->nom,
@@ -25,8 +23,9 @@ class Ctradmin extends Controller
             'mot' => $request->mot,
             'ville' => $request->ville,
             'status' => $request->status,
-            'etat' => $request->etat,
-            'acces_a' => $request->acces_a
+            'etat' => 0,
+            'acces_a' => 0,
+            'num_admin' => 0
         ]);
 
         return response()->json([
