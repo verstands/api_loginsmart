@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\plein;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -47,13 +49,24 @@ class Ctrplein extends Controller
         ], 200);
     }
 
-    public function index(){
+    public function index($site){
         $view = plein::all();
+        $req = DB::table('pleins')->
+        join('vehecules', 'pleins.id_veh', '=', 'vehecules.id')->
+        join('chauffeurs', 'pleins.id_chauf', '=', 'chauffeurs.id')->
+        join('affectations', 'chauffeurs.id', '=', 'affectations.id_chauf')->
+        join('sites', 'affectations.id_site', '=', 'sites.id')->
+        join('acces', 'sites.id', '=', 'acces.idSite')->
+        where('affectations.id_site', '=', $site)->
+        select('pleins.*', 'vehecules.immatriculation', 'acces.type_acces')->
+        get();
         return response()->json([
             'message' => 'Les pleins',
-            'data' => $view
+            'data' => $req
         ], 200);
     }
+
+    
 
     public function indexID($id){
         $verify = plein::whereId(['id' => $id])->first();

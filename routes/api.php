@@ -442,7 +442,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/piece/{id}', [Ctrpiece::class, 'delete']);
     //plein
     Route::post('/plein', [Ctrplein::class, 'create']);
-    Route::get('/plein', [Ctrplein::class, 'index']);
+    Route::get('/plein/{site}', [Ctrplein::class, 'index']);
     Route::get('/plein/{id}', [Ctrplein::class, 'indexID']);
     Route::delete('/plein/{id}', [Ctrplein::class, 'delete']);
     //pleingen

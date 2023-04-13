@@ -40,7 +40,7 @@ class Ctrpleingen extends Controller
     }
 
     public function index(){
-        $view = pleingen::all();
+        $view = pleingen::all(); 
         return response()->json([
             'message' => 'Les accès',
             'data' => $view

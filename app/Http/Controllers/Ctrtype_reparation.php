@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\type_reparation;
+
 
 class Ctrtype_reparation extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'type_acces' => 'required',
-            'idUser' => 'required',
-            'idSite' => 'required',
+            'type_rep' => 'required',
         ]);
-        $valide = acces::create([
-            'idUser' => $request->idUser,
-            'idSite' => $request->idSite,
-            'type_acces' => $request->type_acces,
+        $valide = type_reparation::create([
+            'type_rep' => $request->type_rep
         ]);
 
         return response()->json([
@@ -25,7 +23,7 @@ class Ctrtype_reparation extends Controller
     }
 
     public function index(){
-        $view = acces::all();
+        $view = type_reparation::all();
         return response()->json([
             'message' => 'Les accès',
             'data' => $view
@@ -33,7 +31,7 @@ class Ctrtype_reparation extends Controller
     }
 
     public function indexID($id){
-        $verify = acces::whereId(['id' => $id])->first();
+        $verify = type_reparation::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -47,7 +45,7 @@ class Ctrtype_reparation extends Controller
     }
 
     public function delete($id){
-        $verify = acces::whereId($id)->first();
+        $verify = type_reparation::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

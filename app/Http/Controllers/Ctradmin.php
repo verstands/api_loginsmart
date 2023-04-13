@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\acces;
 use Illuminate\Http\Request;
 use App\Models\admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctradmin extends Controller
@@ -72,21 +74,33 @@ class Ctradmin extends Controller
 
     public function login(Request $request){
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required',
             'mot' => 'required'
         ]);
-        $result = admin::whereNom($request->email)->whereMot($request->mot)->first();
-        if($result == true){
-            $token = $result->createToken('auth_token')->plainTextToken;
+        $sites = DB::table('admins')->join('acces', 'acces.idUser' , '=', 'admins.num_admin')->
+        where('admins.nom', $request->email)->
+        where('admins.mot', $request->mot)->
+        select('acces.idSite')->
+        get();
+
+        /*$sites = DB::table('acces')
+        ->join('admins', 'admins.num_admin', '=', 'acces.IdUser')
+        ->where('nom', '=',  $request->email)
+        ->where('mot', '=',  $request->mot)
+        ->pluck('IdSite')
+        ->implode(',');*/
+        $results = admin::whereNom($request->email)->whereMot($request->mot)->first();
+        if($results == true){
+            $token = $results->createToken('auth_token')->plainTextToken;
             return response()->json([
-                'message' => 'vous etes connecté',
-                'data' => $result,
+                'data' => $results,
+                'sites' => $sites,
                 'token' => $token,
             ], 200);
         }
-          return response()->json([
+        return response()->json([
              'message' => 'login incorrect ! '
-          ], 401);
+        ], 401);
     }
 
     public function logout(Request $request)
