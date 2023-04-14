@@ -54,11 +54,10 @@ class Ctrplein extends Controller
         $req = DB::table('pleins')->
         join('vehecules', 'pleins.id_veh', '=', 'vehecules.id')->
         join('chauffeurs', 'pleins.id_chauf', '=', 'chauffeurs.id')->
-        join('affectations', 'chauffeurs.id', '=', 'affectations.id_chauf')->
-        join('sites', 'affectations.id_site', '=', 'sites.id')->
-        join('acces', 'sites.id', '=', 'acces.idSite')->
-        where('affectations.id_site', '=', $site)->
-        select('pleins.*', 'vehecules.immatriculation', 'acces.type_acces')->
+        join('affecters', 'pleins.id_veh', '=', 'affecters.id_veh')->
+        join('sites', 'affecters.lieu', '=', 'sites.ref_site')->
+        where('affecters.lieu', '=', $site)->
+        select('pleins.id', 'pleins.num', 'vehecules.immatriculation', 'pleins.date_plein', 'pleins.qteplein', 'chauffeurs.nom', 'pleins.kilometrage', 'vehecules.type_carb', 'chauffeurs.nom', 'chauffeurs.prenom')->
         get();
         return response()->json([
             'message' => 'Les pleins',
