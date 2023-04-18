@@ -3,37 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\marque;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Ctrmarque extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'type_acces' => 'required',
-            'idUser' => 'required',
-            'idSite' => 'required',
+            'marque' => 'required'
         ]);
-        $valide = acces::create([
-            'idUser' => $request->idUser,
-            'idSite' => $request->idSite,
-            'type_acces' => $request->type_acces,
+        $valide = marque::create([
+            'marque' => $request->marque,
         ]);
 
         return response()->json([
-            'message' => "accès créé avec succès !",
+            'message' => "marque créé avec succès !",
             'data' => $valide
         ], 200);
     }
 
-    public function index(){
-        $view = acces::all();
+    public function index($site){
+        $view = DB::table('marques')->
+        join('vehecules', 'marques.marq  ue', '=', 'vehecules.marque')->
+        join('affecters', 'vehecules.id', '=', 'affecters.id_veh')->
+        join('sites', 'affecters.lieu', '=', 'sites.ref_site')->
+        where('affecters.lieu', '=', $site)->
+        select('marques.marque', 'marques.id')->
+        get();
+
         return response()->json([
-            'message' => 'Les accès',
+            'message' => 'Les marques',
             'data' => $view
         ], 200);
     }
 
     public function indexID($id){
-        $verify = acces::whereId(['id' => $id])->first();
+        $verify = marque::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -47,7 +53,7 @@ class Ctrmarque extends Controller
     }
 
     public function delete($id){
-        $verify = acces::whereId($id)->first();
+        $verify = marque::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([

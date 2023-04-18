@@ -87,7 +87,7 @@ class Ctradmin extends Controller
         ->join('admins', 'admins.num_admin', '=', 'acces.IdUser')
         ->where('nom', '=',  $request->email)
         ->where('mot', '=',  $request->mot)
-        ->pluck('IdSite')
+        ->pluck('   ')
         ->implode(',');*/
         $results = admin::whereNom($request->email)->whereMot($request->mot)->first();
         if($results == true){

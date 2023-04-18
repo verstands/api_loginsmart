@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ville;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Ctrville extends Controller
 {
@@ -26,7 +28,13 @@ class Ctrville extends Controller
         ], 200);
     }
 
-    public function index(){
+    public function index($site){
+        $view = DB::table('villes')->
+        join('sites', 'villes.id', '=', 'sites.idVille')->
+        where('sites.id', '=', $site)->
+        select('villes.ville', 'villes.id')->
+        get();
+
         $view = ville::all();
         return response()->json([
             'message' => 'Les accès',

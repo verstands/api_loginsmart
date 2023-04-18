@@ -206,8 +206,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/categorie_vehicule/{id}', [Ctrcategorie::class, 'delete_vehicule']);
     //chauffeur
     Route::post('/chauffeur', [Ctrchauffeur::class, 'create']);
-    Route::get('/chauffeur', [Ctrchauffeur::class, 'index']);
-    Route::get('/chauffeur/{id}', [Ctrchauffeur::class, 'indexID']);
+    Route::get('/chauffeur/{site}', [Ctrchauffeur::class, 'index']);
+    Route::get('/chauffeurID/{id}', [Ctrchauffeur::class, 'indexID']);
     Route::delete('/chauffeur/{id}', [Ctrchauffeur::class, 'delete']);
     //chek_auto
     Route::post('/check_auto', [Ctrcheck_auto::class, 'create']);
@@ -397,8 +397,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/marque_gen/{id}', [Ctrmarque_gen::class, 'delete']);
     //marque
     Route::post('/marque', [Ctrmarque::class, 'create']);
-    Route::get('/marque', [Ctrmarque::class, 'index']);
-    Route::get('/marque/{id}', [Ctrmarque::class, 'indexID']);
+    Route::get('/marque/{site}', [Ctrmarque::class, 'index']);
+    Route::get('/marqueID/{id}', [Ctrmarque::class, 'indexID']);
     Route::delete('/marque/{id}', [Ctrmarque::class, 'delete']);
     //materiel
     Route::post('/materiel', [Ctrmateriel::class, 'create']);
@@ -447,7 +447,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/plein/{id}', [Ctrplein::class, 'delete']);
     //pleingen
     Route::post('/pleingen', [Ctrpleingen::class, 'create']);
-    Route::get('/pleingen', [Ctrpleingen::class, 'index']);
+    Route::get('/pleingen/{site}', [Ctrpleingen::class, 'index']);
     Route::get('/pleingen/{id}', [Ctrpleingen::class, 'indexID']);
     Route::delete('/pleingen/{id}', [Ctrpleingen::class, 'delete']);
     //portfolio_creations
@@ -467,8 +467,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/produit/{id}', [Ctrproduit::class, 'delete']);
     //province
     Route::post('/province', [Ctrprovince::class, 'create']);
-    Route::get('/province', [Ctrprovince::class, 'index']);
-    Route::get('/province/{id}', [Ctrprovince::class, 'indexID']);
+    Route::get('/province/{site}', [Ctrprovince::class, 'index']);
+    Route::get('/provinceID/{id}', [Ctrprovince::class, 'indexID']);
     Route::delete('/province/{id}', [Ctrprovince::class, 'delete']);
     //reclamations
     Route::post('/reclamations', [Ctrreclamations::class, 'create']);
@@ -517,8 +517,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/sinistre/{id}', [Ctrsinistre::class, 'delete']);
     //site
     Route::post('/site', [Ctrsite::class, 'create']);
-    Route::get('/site', [Ctrsite::class, 'index']);
-    Route::get('/site/{id}', [Ctrsite::class, 'indexID']);
+    Route::get('/site/{site}', [Ctrsite::class, 'index']);
+    Route::get('/siteID/{id}', [Ctrsite::class, 'indexID']);
     Route::delete('/site/{id}', [Ctrsite::class, 'delete']);
     //state_assurance
     Route::post('/state_assurance', [Ctrstate_assurance::class, 'create']);
@@ -672,8 +672,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/unite/{id}', [Ctrunite::class, 'delete']);
     //vehecule
     Route::post('/vehicule', [Ctrvehecule::class, 'create']);
-    Route::get('/vehicule', [Ctrvehecule::class, 'index']);
-    Route::get('/vehicule/{id}', [Ctrvehecule::class, 'indexID']);
+    Route::get('/vehicule/{site}', [Ctrvehecule::class, 'index']);
+    Route::get('/vehiculeID/{id}', [Ctrvehecule::class, 'indexID']);
     Route::delete('/vehicule/{id}', [Ctrvehecule::class, 'delete']);
     Route::get('/Rechercehe_ficheTechnique/{un}/{deux}', [Ctrvehecule::class, 'Rechercehe_ficheTechnique']);
     //vehicule_tiers
@@ -683,8 +683,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/vehicule_tiers/{id}', [Ctrvehicule_tiers::class, 'delete']);
     //ville
     Route::post('/ville', [Ctrville::class, 'create']);
-    Route::get('/ville', [Ctrville::class, 'index']);
-    Route::get('/ville/{id}', [Ctrville::class, 'indexID']);
+    Route::get('/ville/{site}', [Ctrville::class, 'index']);
+    Route::get('/villeID/{id}', [Ctrville::class, 'indexID']);
     Route::delete('/ville/{id}', [Ctrville::class, 'delete']);
     //zoneCtrh_affectaion
     Route::post('/zone', [Ctrzone::class, 'create']);
@@ -697,7 +697,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/h_affectaion/{id}', [Ctrh_affectaion::class, 'indexID']);
     Route::delete('/h_affectaion/{id}', [Ctrh_affectaion::class, 'delete']);
     //Recherche
-    Route::get('/recherche_consomation/{debut}/{fin}', [Ctrplein::class, 'recherche_consomation']);
+    Route::get('/recherche_consomation/{debut}/{fin}/{site}', [Ctrplein::class, 'recherche_consomation']);
+    Route::get('/recherche_carburant/{Periodedebut}/{Peridofin}/{immatriculation}/{numerobr}/{chauffeur}/{marque}/{modele}/{province}/{ville}/{quatite}/{carburant}/{placer}/{site}', [Ctrplein::class, 'recherche_carbura']);
     
 
 });

@@ -9,6 +9,6 @@ class marque extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'Marque'
+        'marque'
     ];
 }

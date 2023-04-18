@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\pleingen;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctrpleingen extends Controller
@@ -39,10 +40,16 @@ class Ctrpleingen extends Controller
         ], 200);
     }
 
-    public function index(){
+    public function index($site){
+       /* $req = DB::table('groupes')->
+        join('groupes', 'affectations_gen.num_generateur', '=', 'groupes.id')->
+        join('sites', 'sites.ref_site', '=', 'affectations_gen.id_site')->
+        where('affectations_gen.id_site', '=', $site)->
+        select('groupes.id', 'groupes.codegroupe', 'groupes.puissance', 'sites.nom_site')->
+        get();*/
         $view = pleingen::all(); 
         return response()->json([
-            'message' => 'Les accès',
+            'message' => 'Les pleins génératrices !',
             'data' => $view
         ], 200);
     }

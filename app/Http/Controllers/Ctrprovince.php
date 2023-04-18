@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\province;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctrprovince extends Controller
@@ -25,8 +27,14 @@ class Ctrprovince extends Controller
         ], 200);
     }
 
-    public function index(){
-        $view = province::all();
+    public function index($site){
+        $view = DB::table('provinces')->
+        join('villes', 'provinces.id', '=', 'villes.ref_prov')->
+        join('sites', 'villes.id', '=', 'sites.idVille')->
+        where('sites.id', '=', $site)->
+        select('provinces.province', 'provinces.id')->
+        get();
+
         return response()->json([
             'message' => 'Les provinces',
             'data' => $view

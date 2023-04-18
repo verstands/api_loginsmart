@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\chauffeur;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Ctrchauffeur extends Controller
 {
@@ -62,8 +64,13 @@ class Ctrchauffeur extends Controller
         ], 200);
     }
 
-    public function index(){
-        $view = chauffeur::all();
+    public function index($site){
+        $view = DB::table('chauffeurs')->
+        join('affecters', 'chauffeurs.id', '=', 'affecters.id_chauf')->
+        where('affecters.lieu', '=', $site)->
+        select('chauffeurs.id', 'chauffeurs.nom', 'chauffeurs.prenom')->
+        get();
+
         return response()->json([
             'message' => 'Les chauffeurs',
             'data' => $view

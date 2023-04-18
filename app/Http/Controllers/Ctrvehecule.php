@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\vehecule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctrvehecule extends Controller
@@ -106,10 +108,15 @@ class Ctrvehecule extends Controller
         ], 200);
     }
 
-    public function index(){
-        $view = vehecule::all();
+    public function index($site){
+        $view = DB::table('vehecules')->
+        join('affecters', 'vehecules.id', '=', 'affecters.id_veh')->
+        where('affecters.lieu', '=', $site)->
+        select('vehecules.id', 'vehecules.immatriculation', 'vehecules.type_carb')->
+        get();
+
         return response()->json([
-            'message' => 'Les vehecules',
+            'message' => 'Les vehecules selon les sites',
             'data' => $view
         ], 200);
     }

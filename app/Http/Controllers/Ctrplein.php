@@ -94,11 +94,55 @@ class Ctrplein extends Controller
              ], 401);
          }
     }
-    public function recherche_consomation($debut, $fin){
-        $verify = plein::whereBetween('datesyst', [$debut, $fin])->get();
-        if($verify){
+    public function recherche_consomation($debut, $fin, $site){
+       // $verify = plein::whereBetween('datesyst', [$debut, $fin])->get();
+        $v = DB::table('pleins')->join('vehecules', 'pleins.id_veh', '=', 'vehecules.id')->
+        join('chauffeurs', 'pleins.id_chauf', '=', 'chauffeurs.id')->
+        join('affecters', 'pleins.id_veh', '=', 'affecters.id_veh')->
+        join('sites', 'affecters.lieu', '=', 'sites.ref_site')->
+        where('affecters.lieu', '=', $site)->
+        whereBetween('datesyst', [$debut, $fin])->
+        select('pleins.id', 'pleins.num', 'vehecules.immatriculation', 'pleins.date_plein', 'pleins.qteplein', 'chauffeurs.nom', 'pleins.kilometrage', 'vehecules.type_carb', 'chauffeurs.nom', 'chauffeurs.prenom')->
+        get();
+        
+        if($v){
             return response()->json([
-                'data' => $verify
+                'data' => $v
+             ],200);
+        }else{
+            return response()->json([
+                'message' => "vide !"
+            ], 401);
+        }
+    }
+    public function recherche_carbura($Periodedebut, $Peridofin, $immatriculation, $numerobr, $chauffeur, $marque, $modele, $province, $ville, $quatite, $carburant, $placer, $site){
+        $v = DB::table('pleins')->
+        join('vehecules', 'pleins.id_veh', '=', 'vehecules.id')->
+        join('affecters', 'vehecules.id', '=', 'affecters.id_veh')->
+        join('type_carburants', 'vehecules.type_carb', '=', 'type_carburants.id')->
+        join('marques', 'vehecules.marque', '=', 'marques.id')->
+        join('modeles', 'vehecules.modele', '=', 'modeles.id')->
+        join('sites', 'affecters.lieu', '=', 'sites.ref_site')->
+        join('villes', 'sites.IdVille', '=', 'villes.id')->
+        join('provinces', 'villes.ref_prov', '=', 'provinces.id')->
+        where('affecters.lieu', '=', $site)->
+        whereBetween('datesyst', [$Periodedebut, $Peridofin])->
+        where('vehecules.immatriculation', 'like', '%'.$immatriculation.'%')->
+        where('pleins.num', 'like', '%'.$numerobr.'%')->
+        where('pleins.id_chauf', 'like', '%'.$chauffeur.'%')->
+        where('vehecules.marque', 'like', '%'.$marque.'%')->
+        where('vehecules.modele', 'like', '%'.$modele.'%')->
+        where('provinces.id', 'like', '%'.$province.'%')->
+        where('villes.id', 'like', '%'.$ville.'%')->
+        where('pleins.qteplein', 'like', '%'.$quatite.'%')->
+        where('vehecules.type_carb', 'like', '%'.$carburant.'%')->
+        where('affecters.lieu', 'like', '%'.$placer.'%')->
+        select('pleins.id', 'pleins.num', 'vehecules.immatriculation', 'pleins.date_plein', 'pleins.qteplein', 'pleins.id_chauf', 'pleins.kilometrage', 'vehecules.type_carb', 'pleins.id_chauf', 'pleins.id_chauf')->
+        get();
+        
+        if($v){
+            return response()->json([
+                'data' => $v
              ],200);
         }else{
             return response()->json([

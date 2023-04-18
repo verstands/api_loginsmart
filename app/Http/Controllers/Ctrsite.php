@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\site;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctrsite extends Controller
@@ -35,8 +37,13 @@ class Ctrsite extends Controller
         ], 200);
     }
 
-    public function index(){
-        $view = site::all();
+    public function index($site){
+        $view = DB::table('sites')->
+        join('affecters', 'sites.ref_site', '=', 'affecters.lieu')->
+        where('affecters.lieu', '=', $site)->
+        select('sites.id', 'sites.nom_site')->
+        get();
+
         return response()->json([
             'message' => 'Les zone',
             'data' => $view
