@@ -41,13 +41,14 @@ class Ctrpleingen extends Controller
     }
 
     public function index($site){
-       /* $req = DB::table('groupes')->
-        join('groupes', 'affectations_gen.num_generateur', '=', 'groupes.id')->
-        join('sites', 'sites.ref_site', '=', 'affectations_gen.id_site')->
-        where('affectations_gen.id_site', '=', $site)->
-        select('groupes.id', 'groupes.codegroupe', 'groupes.puissance', 'sites.nom_site')->
-        get();*/
-        $view = pleingen::all(); 
+        $view = DB::table('pleingens')->
+        join('groupes', 'pleingens.numero', '=', 'groupes.id')->
+        join('affectation_gens', 'groupes.id', '=', 'affectation_gens.num_generateur')->
+        join('sites', 'affectation_gens.id_site', '=', 'sites.ref_site')->
+        where('sites.ref_site', '=', $site)->
+        select('pleingens.id', 'pleingens.date_plein', 'pleingens.qteplein', 'pleingens.heures', 'pleingens.type_carb', 'pleingens.agent')->
+        get();
+        
         return response()->json([
             'message' => 'Les pleins génératrices !',
             'data' => $view

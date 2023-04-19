@@ -37,7 +37,7 @@ class Ctrville extends Controller
 
         $view = ville::all();
         return response()->json([
-            'message' => 'Les accès',
+            'message' => 'Les villes',
             'data' => $view
         ], 200);
     }

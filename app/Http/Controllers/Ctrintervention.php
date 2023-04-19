@@ -41,6 +41,7 @@ class Ctrintervention extends Controller
     }
 
     public function index(){
+        
         $view = intervention::all();
         return response()->json([
             'message' => 'Les accès',
