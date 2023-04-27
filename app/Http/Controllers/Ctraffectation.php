@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\affectation;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class Ctraffectation extends Controller
@@ -12,17 +14,16 @@ class Ctraffectation extends Controller
         $request->validate([
             'id_site' => 'required',
             'id_chauf' => 'required',
-            'user_cr' => 'required',
             'commentaire' => 'required',
-            'suppr' => 'required',
         ]);
-
+        $dates = date('Y-d-m');
         $valide = affectation::create([
             'id_site' => $request->id_site,
             'id_chauf' => $request->id_chauf,
-            'user_cr' => $request->user_cr,
+            'user_cr' => Auth::user()->id,
             'commentaire' => $request->commentaire,
-            'suppr' => $request->suppr
+            'date_cr' => $dates,
+            'suppr' => 0
         ]);
 
         return response()->json([

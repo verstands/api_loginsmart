@@ -67,8 +67,9 @@ class Ctrchauffeur extends Controller
     public function index($site){
         $view = DB::table('chauffeurs')->
         join('affecters', 'chauffeurs.id', '=', 'affecters.id_chauf')->
+        join('villes', 'chauffeurs.ville', '=', 'villes.id')->
         where('affecters.lieu', '=', $site)->
-        select('chauffeurs.id', 'chauffeurs.nom', 'chauffeurs.prenom')->
+        select('chauffeurs.id', 'chauffeurs.nom', 'chauffeurs.prenom', 'chauffeurs.matricule_ch', 'chauffeurs.telephon_serv', 'chauffeurs.typ_trav', 'chauffeurs.ville', 'chauffeurs.id_permi')->
         get();
 
         return response()->json([

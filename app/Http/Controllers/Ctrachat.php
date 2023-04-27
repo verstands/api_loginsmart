@@ -16,7 +16,9 @@ class Ctrachat extends Controller
             'prix' => 'required',
             'prixtotal' => 'required',
             'observation' => 'required',
+            'code' => 'required',
         ]);
+        
         $valide = achat::create([
             'num_fact' => $request->num_fact,
             'immatriculation' => $request->immatriculation,
@@ -25,9 +27,9 @@ class Ctrachat extends Controller
             'prix' => $request->prix,
             'prixtotal' => $request->prixtotal,
             'observation' => $request->observation,
-            'code' =>$request->num_fact
+            'code' =>$request->code
         ]);
-
+        
         return response()->json([
             'message' => "achat effecuté avec succès !",
             'data' => $valide
